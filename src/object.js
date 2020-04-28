@@ -19,6 +19,7 @@ let isObject = obj => Object.prototype.toString.call(obj) === '[object Object]';
 let promise = sync => (sync ? SynchronousPromise : Promise);
 
 function unknown(ctx, value) {
+  if (value == null) return null;
   let known = Object.keys(ctx.fields);
   return Object.keys(value).filter(key => known.indexOf(key) === -1);
 }
